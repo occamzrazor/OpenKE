@@ -17,7 +17,7 @@ VERSION = "2021.9.15"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
-    "pytorch==1.9.0",
+    "torch==1.9.0",
 ]
 
 setup(
