@@ -37,10 +37,10 @@ setup(
     author_email="admin@occamzrazor.com",
     license="",
     packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
-    package_data={"openke": ["openke/release/Base.so"]},
+    package_data={"release": ["openke/release/Base.so"]},
     ext_modules=[
         Extension(
-            "Base",
+            "release/Base",
             sources=["openke/base/Base.cpp"],
             extra_compile_args=["-fPIC", "-shared"],
         )
