@@ -1,3 +1,5 @@
+import subprocess
+
 from setuptools import find_namespace_packages, setup, Extension
 from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
@@ -13,10 +15,11 @@ class custom_build_ext(build_ext):
     def get_ext_filename(self, ext_name):
         return f"{ext_name}.so"
 
-class Build_ext_first(install):
+class build_ext_first(install):
     def run(self):
-        self.run_command("build_ext")
-        super(Build_ext_first, self).run()
+        subprocess.call(['cd', 'openke', '&&', './make.sh'])
+#        self.run_command("build_ext")
+        super(build_ext_first, self).run()
 
 PACKAGENAME = "OpenKE"
 VERSION = "2021.9.15"
@@ -34,7 +37,8 @@ setup(
     author="Han, Xu and Cao, Shulin and Lv Xin and Lin, Yankai and Liu, Zhiyuan and Sun, Maosong and Li, Juanzi",
     author_email="admin@occamzrazor.com",
     license="",
-    packages=find_namespace_packages(exclude=["examples", "benchmarks"], include=["openke"]),
+    packages=["openke"],
+    package_data={"openke": ["release/Base.so"]},
     ext_modules=[
         Extension(
             "Base",
@@ -44,8 +48,8 @@ setup(
     ],
     zip_safe=False,
     cmdclass={
-        'install': Build_ext_first,
-        "build_ext": custom_build_ext,
+        'install': build_ext_first,
+#        "build_ext": custom_build_ext,
     },
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
