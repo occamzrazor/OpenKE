@@ -20,7 +20,7 @@ class build_ext_first(install):
         self.run_command("build_ext")
         super(build_ext_first, self).run()
 
-PACKAGENAME = "OpenKE"
+PACKAGENAME = "openke"
 VERSION = "2021.9.15"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
