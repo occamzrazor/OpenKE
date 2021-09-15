@@ -17,8 +17,7 @@ class custom_build_ext(build_ext):
 
 class build_ext_first(install):
     def run(self):
-        subprocess.call(['cd', 'openke', '&&', './make.sh'])
-#        self.run_command("build_ext")
+        self.run_command("build_ext")
         super(build_ext_first, self).run()
 
 PACKAGENAME = "OpenKE"
@@ -48,7 +47,7 @@ setup(
     ],
     zip_safe=False,
     cmdclass={
-#        'install': build_ext_first,
+        'install': build_ext_first,
         "build_ext": custom_build_ext,
     },
     install_requires=INSTALL_REQUIRES,
