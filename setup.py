@@ -1,17 +1,19 @@
-from setuptools import find_namespace_packages, setup, Extension, command
+from setuptools import find_namespace_packages, setup, Extension
+from setuptools.command.build_ext import build_ext
+from setuptools.command.install import install
 
 
-class custom_build_ext(command.build_ext.build_ext):
+class custom_build_ext(build_ext):
     def build_extensions(self):
         self.compiler.set_executable("compiler_so", "g++")
         self.compiler.set_executable("compiler_cxx", "g++")
         self.compiler.set_executable("linker_so", "g++")
-        command.buil_ext.build_ext.build_extensions(self)
+        build_ext.build_extensions(self)
 
     def get_ext_filename(self, ext_name):
         return f"{ext_name}.so"
 
-class Build_ext_first(command.install.install):
+class Build_ext_first(install):
     def run(self):
         self.run_command("build_ext")
         super(Build_ext_first, self).run()
