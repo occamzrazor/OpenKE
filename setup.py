@@ -4,10 +4,6 @@ from setuptools.command.build_ext import build_ext
 
 class custom_build_ext(build_ext):
     def build_extensions(self):
-        # Override the compiler executables. Importantly, this
-        # removes the "default" compiler flags that would
-        # otherwise get passed on to to the compiler, i.e.,
-        # distutils.sysconfig.get_var("CFLAGS").
         self.compiler.set_executable("compiler_so", "g++")
         self.compiler.set_executable("compiler_cxx", "g++")
         self.compiler.set_executable("linker_so", "g++")
@@ -18,9 +14,10 @@ class custom_build_ext(build_ext):
 
 PACKAGENAME = "OpenKE"
 VERSION = "2021.9.15"
-PYTHON_REQUIRES = ">=3.8"
+PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
+    "pytorch==1.9",
 ]
 
 setup(
@@ -31,7 +28,7 @@ setup(
     author="Han, Xu and Cao, Shulin and Lv Xin and Lin, Yankai and Liu, Zhiyuan and Sun, Maosong and Li, Juanzi",
     author_email="admin@occamzrazor.com",
     license="",
-    packages=find_namespace_packages(),
+    packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
     ext_modules=[
         Extension(
             "Base",
