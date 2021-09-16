@@ -1,6 +1,6 @@
 """"""
 
-from setuptools import find_namespace_packages, setup, Extension
+from setuptools import find_packages, setup, Extension
 from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
 
@@ -38,7 +38,7 @@ setup(
     description="OpenKE: An Open Toolkit for Knowledge Embedding",
     url="git@github.com:occamzrazor/OpenKE.git",
     author="Han, Xu and Cao, Shulin and Lv Xin and Lin, Yankai and Liu, Zhiyuan and Sun, Maosong and Li, Juanzi",
-    packages=find_namespace_packages(exclude=["benchmarks", "examples"]),
+    packages=find_packages(exclude=["benchmarks", "examples"]),
     ext_modules=[
         Extension(
             "openke/release/Base",

@@ -1,0 +1,2 @@
+recursive-exclude benchmarks *
+recursive-exclude examples *
