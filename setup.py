@@ -1,4 +1,6 @@
 import subprocess
+import os
+import shutil
 
 from setuptools import find_namespace_packages, setup, Extension
 from setuptools.command.build_ext import build_ext
@@ -15,10 +17,12 @@ class custom_build_ext(build_ext):
     def get_ext_filename(self, ext_name):
         return f"{ext_name}.so"
 
+
 class build_ext_first(install):
     def run(self):
         self.run_command("build_ext")
         super(build_ext_first, self).run()
+
 
 PACKAGENAME = "openke"
 VERSION = "2021.9.15"
@@ -26,6 +30,8 @@ PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
     "torch==1.9.0",
+    "tqdm",
+    "sklearn"
 ]
 
 setup(
@@ -37,7 +43,7 @@ setup(
     author_email="admin@occamzrazor.com",
     license="",
     packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
-    package_data={"": ["openke/release/Base.so"]},
+    package_data={"": ["openke/release/Base.so", "**/*.so"]},
     include_package_data=True,
     ext_modules=[
         Extension(
