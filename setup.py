@@ -37,21 +37,21 @@ setup(
     author_email="admin@occamzrazor.com",
     license="",
     packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
-    package_dir={"": "."},
-    package_data={"": ["openke/release/Base.so"]},
+    #package_dir={"": "."},
+    #package_data={"": ["openke/release/Base.so"]},
     ext_modules=[
         Extension(
-            "Base",
+            "openke.release.Base",
             sources=["openke/base/Base.cpp"],
             extra_compile_args=["-fPIC", "-shared"],
         )
     ],
     zip_safe=False,
-    cmdclass={
-        #"install": build_ext_first,
-        "build_ext": custom_build_ext,
-    },
-    include_package_data=True,
+    #cmdclass={
+    #    "install": build_ext_first,
+    #    "build_ext": custom_build_ext,
+    #},
+    #include_package_data=True,
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
 )
