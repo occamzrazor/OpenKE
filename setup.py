@@ -36,9 +36,10 @@ setup(
     author="Han, Xu and Cao, Shulin and Lv Xin and Lin, Yankai and Liu, Zhiyuan and Sun, Maosong and Li, Juanzi",
     author_email="admin@occamzrazor.com",
     license="",
-    packages=find_namespace_packages(exclude=["examples", "benchmarks"], include=["openke/**"]),
+    packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
     #package_dir={"": "."},
-    #package_data={"": ["openke/release/Base.so"]},
+    package_data={"openke": ["release/Base.so"]},
+    include_package_data=True,
     ext_modules=[
         Extension(
             "openke.release.Base",
@@ -51,7 +52,6 @@ setup(
     #    "install": build_ext_first,
         "build_ext": custom_build_ext,
     },
-    #include_package_data=True,
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
 )
