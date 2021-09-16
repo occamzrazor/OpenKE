@@ -49,7 +49,7 @@ setup(
     ],
     zip_safe=False,
     cmdclass={
-    #    "install": build_ext_first,
+        "install": build_ext_first,
         "build_ext": custom_build_ext,
     },
     install_requires=INSTALL_REQUIRES,
