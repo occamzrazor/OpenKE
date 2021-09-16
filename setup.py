@@ -45,7 +45,7 @@ setup(
     packages=find_namespace_packages(exclude=["benchmarks", "examples"]),
     ext_modules=[
         Extension(
-            "Base",
+            "openke/release/Base",
             sources=["openke/base/Base.cpp"],
             extra_compile_args=["-fPIC", "-shared"],
         )
