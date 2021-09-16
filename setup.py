@@ -37,8 +37,7 @@ setup(
     author_email="admin@occamzrazor.com",
     license="",
     packages=find_namespace_packages(exclude=["examples", "benchmarks"]),
-    #package_dir={"": "."},
-    package_data={"openke": ["release/Base.so"]},
+    package_data={"": ["openke/release/Base.so"]},
     include_package_data=True,
     ext_modules=[
         Extension(
