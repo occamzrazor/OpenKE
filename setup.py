@@ -1,6 +1,4 @@
-import subprocess
-import os
-import shutil
+""""""
 
 from setuptools import find_namespace_packages, setup, Extension
 from setuptools.command.build_ext import build_ext
@@ -25,11 +23,11 @@ class build_ext_first(install):
 
 
 PACKAGENAME = "openke"
-VERSION = "2021.9.15"
+VERSION = "2021.9.16"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
-    "torch==1.9.0",
+    "torch=>1.9.0",
     "tqdm",
     "sklearn"
 ]
@@ -40,8 +38,6 @@ setup(
     description="OpenKE: An Open Toolkit for Knowledge Embedding",
     url="git@github.com:occamzrazor/OpenKE.git",
     author="Han, Xu and Cao, Shulin and Lv Xin and Lin, Yankai and Liu, Zhiyuan and Sun, Maosong and Li, Juanzi",
-    author_email="admin@occamzrazor.com",
-    license="",
     packages=find_namespace_packages(exclude=["benchmarks", "examples"]),
     ext_modules=[
         Extension(
