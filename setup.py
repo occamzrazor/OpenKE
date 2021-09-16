@@ -42,7 +42,7 @@ setup(
     include_package_data=True,
     ext_modules=[
         Extension(
-            "openke.release.Base",
+            "Base",
             sources=["openke/base/Base.cpp"],
             extra_compile_args=["-fPIC", "-shared"],
         )
