@@ -50,6 +50,7 @@ setup(
         'install': build_ext_first,
         "build_ext": custom_build_ext,
     },
+    include_package_data=True,
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
 )
