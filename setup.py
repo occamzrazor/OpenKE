@@ -27,7 +27,7 @@ VERSION = "2021.9.16"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
-    "torch=>1.9.0",
+    "torch>=1.9.0",
     "tqdm",
     "sklearn"
 ]
