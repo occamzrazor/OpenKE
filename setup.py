@@ -1,5 +1,7 @@
 """"""
 
+import platform
+
 from setuptools import find_packages, setup, Extension
 from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
@@ -32,6 +34,19 @@ INSTALL_REQUIRES = [
     "sklearn"
 ]
 
+extra_compile_args = ["-fPIC", "-shared"]
+extra_link_args = []
+
+if platform.system() == 'Linux' :
+    try:
+        if platform.architecture()[0] == '64bit' :
+            extra_compile_args = ['-pthread']
+        else:
+            extra_compile_args = ['-pthread','-march=pentium4']
+    except KeyError:
+        extra_compile_args = ['-pthread','-march=pentium4']
+    extra_link_args = ['-pthread']
+
 setup(
     name=PACKAGENAME,
     version=VERSION,
@@ -43,7 +58,8 @@ setup(
         Extension(
             "openke/release/Base",
             sources=["openke/base/Base.cpp"],
-            extra_compile_args=["-fPIC", "-shared", "-pthread"],
+            extra_compile_args=extra_compile_args,
+            extra_link_args=extra_link_args
         )
     ],
     zip_safe=False,
