@@ -23,7 +23,7 @@ class build_ext_first(install):
 
 
 PACKAGENAME = "openke"
-VERSION = "OpenKE-PyTorch.v2"
+VERSION = "2021.9.20"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
