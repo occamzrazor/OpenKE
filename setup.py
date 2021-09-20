@@ -23,7 +23,7 @@ class build_ext_first(install):
 
 
 PACKAGENAME = "openke"
-VERSION = "2021.9.20"
+VERSION = "2021.9.20.dev1"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
@@ -43,7 +43,7 @@ setup(
         Extension(
             "openke/release/Base",
             sources=["openke/base/Base.cpp"],
-            extra_compile_args=["-fPIC", "-shared", "-lpthread"],
+            extra_compile_args=["-fPIC", "-shared", "-pthread"],
         )
     ],
     zip_safe=False,
