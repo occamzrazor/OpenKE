@@ -25,7 +25,7 @@ class build_ext_first(install):
 
 
 PACKAGENAME = "openke"
-VERSION = "2021.9.20.dev1"
+VERSION = "2021.9.20"
 PYTHON_REQUIRES = ">=3.9"
 INSTALL_REQUIRES = [
     "setuptools",
@@ -37,14 +37,14 @@ INSTALL_REQUIRES = [
 extra_compile_args = ["-fPIC", "-shared"]
 extra_link_args = []
 
-if platform.system() == 'Linux' :
+if platform.system() == 'Linux':
     try:
-        if platform.architecture()[0] == '64bit' :
+        if platform.architecture()[0] == '64bit':
             extra_compile_args = ['-pthread']
         else:
-            extra_compile_args = ['-pthread','-march=pentium4']
+            extra_compile_args = ['-pthread', '-march=pentium4']
     except KeyError:
-        extra_compile_args = ['-pthread','-march=pentium4']
+        extra_compile_args = ['-pthread', '-march=pentium4']
     extra_link_args = ['-pthread']
 
 setup(
