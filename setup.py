@@ -43,7 +43,7 @@ setup(
         Extension(
             "openke/release/Base",
             sources=["openke/base/Base.cpp"],
-            extra_compile_args=["-fPIC", "-shared"],
+            extra_compile_args=["-fPIC", "-shared", "-lpthread"],
         )
     ],
     zip_safe=False,
