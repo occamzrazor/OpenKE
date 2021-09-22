@@ -34,8 +34,8 @@ INSTALL_REQUIRES = [
     "sklearn"
 ]
 
-extra_compile_args = ["-fPIC", "-shared"]
-extra_link_args = []
+extra_compile_args = ["-fPIC"]
+extra_link_args = ["-shared"]
 
 if platform.system() == 'Linux':
     try:
